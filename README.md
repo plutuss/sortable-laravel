@@ -15,6 +15,9 @@ Add:
 - Plutuss\Sortable\Traits\Sortable
 - Plutuss\Sortable\Contracts\SortableInterface
 
+
+- 
+
 ```php
 <?php
 
@@ -26,6 +29,20 @@ use  Plutuss\Sortable\Traits\Sortable;
 class Movie extends Model implements SortableInterface
 {
     use Sortable;
+    
+     public function sortables(): array
+    {
+        return [
+            'views_desc',
+            
+                 or
+            
+            'views_key' => [
+                'views',
+                'ASC',
+            ],
+        ];
+    }
 
 ```
 
