@@ -46,7 +46,7 @@ class Movie extends Model implements SortableInterface
 
 
 Use:
-- sort()
+- function sort()
 
 ```php
 <?php
