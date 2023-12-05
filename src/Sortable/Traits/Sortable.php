@@ -30,7 +30,9 @@ trait Sortable
             return $query->orderBy($key, $keyword);
         }
 
-        return $query;
+        return $query->when(!request()->has('sort'), function ($query) {
+            $query->orderBy(config('sortable.default.field'), config('sortable.default.keyword'));
+        });
     }
 
     /**

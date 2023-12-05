@@ -1,20 +1,21 @@
 ## Installed packages
 
 Laravel:
+
 - [GitHub](https://github.com/plutuss/sortable-laravel ).
-
-
-
 
 ```shell
  composer require plutuss/sortable-laravel
 ```
 
+```shell
+php artisan vendor:publish --provider="Plutuss\Providers\SortableServiceProvider"
+```
 
 Add:
+
 - Plutuss\Sortable\Traits\Sortable
 - Plutuss\Sortable\Contracts\SortableInterface
-
 
 ```php
 <?php
@@ -44,8 +45,8 @@ class Movie extends Model implements SortableInterface
 
 ```
 
-
 Use:
+
 - function sort()
 
 ```php
@@ -71,6 +72,7 @@ class MovieController extends Controller
     }
 
 ```
+
 ```php
 <select name="sort">
     <option value="views_desc" >@lang('Views Descending')</option>
