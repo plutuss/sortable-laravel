@@ -16,8 +16,6 @@ Add:
 - Plutuss\Sortable\Contracts\SortableInterface
 
 
-- 
-
 ```php
 <?php
 
@@ -33,13 +31,13 @@ class Movie extends Model implements SortableInterface
      public function sortables(): array
     {
         return [
-            'views_desc',
+            'views_desc', // field in database  +  SQL ORDER BY Keyword
             
                  or
             
-            'views_key' => [
-                'views',
-                'ASC',
+            'views_key' => [  // key any
+                'views',  // field in database
+                'ASC',   // SQL ORDER BY Keyword
             ],
         ];
     }
@@ -72,4 +70,11 @@ class MovieController extends Controller
         return view('movies.index', compact('movies'));
     }
 
+```
+```php
+<select name="sort">
+    <option value="views_desc" >@lang('Views Descending')</option>
+    <option value="views_key" >@lang('Views Ascending')</option>
+</select>
+                
 ```
