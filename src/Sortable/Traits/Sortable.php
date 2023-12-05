@@ -25,9 +25,9 @@ trait Sortable
 
         if ($sort && (in_array($sort, $sortables) || array_key_exists($sort, $sortables))) {
 
-            [$key, $value] = $this->sortableValue($sort, $sortables);
+            [$key, $keyword] = $this->sortableValue($sort, $sortables);
 
-            return $query->orderBy($key, $value);
+            return $query->orderBy($key, $keyword);
         }
 
         return $query;
