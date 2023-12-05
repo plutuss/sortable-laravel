@@ -25,7 +25,7 @@ trait Sortable
 
         if ($sort && (in_array($sort, $sortables) || array_key_exists($sort, $sortables))) {
 
-            [$key, $keyword] = $this->sortableValue($sort, $sortables);
+            [$key, $keyword] = $this->sortableFieldDivider($sort, $sortables);
 
             return $query->orderBy($key, $keyword);
         }
@@ -40,7 +40,7 @@ trait Sortable
      * @param array $sortables
      * @return mixed
      */
-    private function sortableValue(string $sort, array $sortables): mixed
+    private function sortableFieldDivider(string $sort, array $sortables): mixed
     {
         if (array_key_exists($sort, $sortables)) {
             return $sortables[$sort];
