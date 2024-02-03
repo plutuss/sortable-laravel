@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-trait SortableLivewire
+trait SortableWithQueryString
 {
 
     /**
