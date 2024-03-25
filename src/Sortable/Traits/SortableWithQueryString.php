@@ -9,12 +9,14 @@ use Psr\Container\NotFoundExceptionInterface;
 trait SortableWithQueryString
 {
 
+    private $query;
+
     /**
      * @param Builder $query
      * @param string $sort
      * @return Builder
      */
-    public function scopeSort(Builder $query, string $sort): Builder
+    public function scopeSort(Builder $query, string $sort, callable $callback = null): Builder
     {
 
         $sortables = call_user_func([$this, 'sortables']);
@@ -23,8 +25,15 @@ trait SortableWithQueryString
 
             [$key, $keyword] = $this->sortableFieldDivider($sort, $sortables);
 
-            return $query->orderBy($key, $keyword);
+            $query = $query->orderBy($key, $keyword);
+
+            if (!empty($callback) && $callback instanceof \Closure) {
+                return $callback($query) ?? $query;
+            }
+
+            return $query;
         }
+
 
         return $query->when(empty($sort), function ($query) {
             $query->orderBy(config('sortable.default.field'), config('sortable.default.keyword'));
@@ -41,8 +50,8 @@ trait SortableWithQueryString
         if (array_key_exists($sort, $sortables)) {
             return $sortables[$sort];
         }
-        return explode('_', $sort);
 
+        return explode('_', $sort);
     }
 
 }
