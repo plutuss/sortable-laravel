@@ -9,8 +9,6 @@ use Psr\Container\NotFoundExceptionInterface;
 trait SortableWithQueryString
 {
 
-    private $query;
-
     /**
      * @param Builder $query
      * @param string $sort
