@@ -12,6 +12,7 @@ trait SortableWithQueryString
     /**
      * @param Builder $query
      * @param string $sort
+     * @param callable|null $callback
      * @return Builder
      */
     public function scopeSort(Builder $query, string $sort, callable $callback = null): Builder
