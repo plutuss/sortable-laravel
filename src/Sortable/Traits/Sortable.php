@@ -9,6 +9,7 @@ use Psr\Container\NotFoundExceptionInterface;
 trait Sortable
 {
 
+    use MainSortable;
 
     /**
      * @param Builder $query
@@ -23,7 +24,7 @@ trait Sortable
 
         $sort = request()->get('sort');
 
-        if ($sort && (in_array($sort, $sortables) || array_key_exists($sort, $sortables))) {
+        if ($this->requestSortableCheck($sort, $sortables)) {
 
             [$key, $keyword] = $this->sortableFieldDivider($sort, $sortables);
 
@@ -33,20 +34,6 @@ trait Sortable
         return $query->when(!request()->has('sort'), function ($query) {
             $query->orderBy(config('sortable.default.field'), config('sortable.default.keyword'));
         });
-    }
-
-    /**
-     * @param string $sort
-     * @param array $sortables
-     * @return mixed
-     */
-    private function sortableFieldDivider(string $sort, array $sortables): mixed
-    {
-        if (array_key_exists($sort, $sortables)) {
-            return $sortables[$sort];
-        }
-        return explode('_', $sort);
-
     }
 
 }
