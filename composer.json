@@ -1,33 +1,31 @@
 {
-  "name": "plutuss/sortable-laravel",
-  "description": "Sortable Filter Laravel .",
-  "keywords": [
-    "laravel",
-    "Sortable"
-  ],
-  "minimum-stability": "stable",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "plutuss",
-      "email": "dima92konovalenko@gmail.com",
-      "homepage": "https://github.com/plutuss"
+    "name": "plutuss/sortable-laravel",
+    "description": "Sortable Filter Laravel .",
+    "keywords": [
+        "laravel",
+        "Sortable"
+    ],
+    "minimum-stability": "stable",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "plutuss",
+            "email": "dima92konovalenko@gmail.com",
+            "homepage": "https://github.com/plutuss"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Plutuss\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Plutuss\\Providers\\SortableServiceProvider"
+            ]
+        }
     }
-  ],
-  "require": {
-    "php": "^8.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "Plutuss\\": "src/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Plutuss\\Providers\\SortableServiceProvider"
-      ]
-    }
-  }
 }

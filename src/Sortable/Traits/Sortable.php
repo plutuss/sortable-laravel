@@ -22,7 +22,7 @@ trait Sortable
 
         $sortables = call_user_func([$this, 'sortables']);
 
-        $sort = request()->get('sort');
+        $sort = request()->get(config('sortable.request_key'));
 
         if ($this->requestSortableCheck($sort, $sortables)) {
 
